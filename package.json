@@ -55,6 +55,11 @@
 					"type": "integer",
 					"description": "Limit the max number of results",
 					"default": 12
+				},
+				"captainStack.settings.httpproxy": {
+					"type": "string",
+					"description": "Http proxy",
+					"default": "http://127.0.0.1:7890"
 				}
 			}
 		}
@@ -73,6 +78,7 @@
 		"build": "vsce package -o ./out-vsix"
 	},
 	"devDependencies": {
+		"@types/http-proxy-agent": "^4.0.1",
 		"@types/node": "^14.15.0",
 		"@types/node-fetch": "^2.5.10",
 		"@typescript-eslint/eslint-plugin": "^4.16.0",
@@ -90,6 +96,7 @@
 	},
 	"dependencies": {
 		"@types/jsdom": "^16.2.12",
+		"http-proxy-agent": "^4.0.1",
 		"jsdom": "^16.6.0",
 		"linkedom": "^0.11.1",
 		"node-fetch": "^2.6.1",

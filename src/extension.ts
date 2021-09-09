@@ -20,7 +20,10 @@ export function activate(_: vscode.ExtensionContext) {
 				try {
 					rs = await search(match.searchPhrase);
 				} catch (err) {
-					vscode.window.showErrorMessage(err.toString());
+					if (err instanceof Error)
+						vscode.window.showErrorMessage(err.toString());
+					else
+						vscode.window.showErrorMessage("Error.");
 					return { items: [] };
 				}
 
