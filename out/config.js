@@ -6,7 +6,9 @@ const CSConfig = {
     SEARCH_PATTERN: /(\/\/|#|--|<!--)\s?find\s?(.+)\s?(\.|-->)/
 };
 function getSearchURL(site, keyword) {
-    return `https://www.google.com/search?q=site%3A${site}+${keyword.replace(/\s/g, "+")}`;
+    const search_url = `https://www.google.com/search?q=site%3A${site}+${keyword.replace(/\s/g, "+")}`;
+    console.log("serarch url:", search_url);
+    return search_url;
 }
 exports.getSearchURL = getSearchURL;
 function getConfig() {
@@ -18,8 +20,9 @@ function getConfig() {
     return {
         settings: {
             sites,
-            maxResults: config.settings.maxResults
-        },
+            maxResults: config.settings.maxResults,
+            httpproxy: config.settings.httpproxy
+        }
     };
 }
 exports.getConfig = getConfig;

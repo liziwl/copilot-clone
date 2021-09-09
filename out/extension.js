@@ -8,14 +8,17 @@ function activate(_) {
     const provider = {
         provideInlineCompletionItems: async (document, position, context, token) => {
             const textBeforeCursor = document.getText(new vscode.Range(position.with(undefined, 0), position));
-            const match = matchSearchPhrase_1.matchSearchPhrase(textBeforeCursor);
+            const match = (0, matchSearchPhrase_1.matchSearchPhrase)(textBeforeCursor);
             if (match) {
                 let rs;
                 try {
-                    rs = await search_1.search(match.searchPhrase);
+                    rs = await (0, search_1.search)(match.searchPhrase);
                 }
                 catch (err) {
-                    vscode.window.showErrorMessage(err.toString());
+                    if (err instanceof Error)
+                        vscode.window.showErrorMessage(err.toString());
+                    else
+                        vscode.window.showErrorMessage("Error.");
                     return { items: [] };
                 }
                 if (rs == null) {

@@ -9,7 +9,7 @@ class ExtractorStackOverflow extends ExtractorAbstract_1.default {
         this.name = "Stackoverflow";
         this.URL = "stackoverflow.com";
         this.extractSnippets = (options) => {
-            const target = linkedom_1.parseHTML(options.textContent);
+            const target = (0, linkedom_1.parseHTML)(options.textContent);
             const answersWithCodeBlock = Array.from(target.window.document.querySelectorAll(".answer"))
                 .filter((item) => item.querySelector("code") != null);
             const results = answersWithCodeBlock
@@ -22,7 +22,7 @@ class ExtractorStackOverflow extends ExtractorAbstract_1.default {
                 sourceURL: `https://${this.URL}${item.querySelector(".js-share-link").href}`,
                 hasCheckMark: item.querySelector("iconCheckmarkLg") != null
             }))
-                .filter(item => utils_1.isCodeValid(item.code));
+                .filter(item => (0, utils_1.isCodeValid)(item.code));
             results.sort(sortSnippetResultFn);
             return results;
         };

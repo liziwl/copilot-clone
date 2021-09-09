@@ -8,7 +8,7 @@ class ExtractorGithubGist extends ExtractorAbstract_1.default {
         this.name = "Github Gist";
         this.URL = "gist.github.com";
         this.extractSnippets = (options) => {
-            const target = linkedom_1.parseHTML(options.textContent);
+            const target = (0, linkedom_1.parseHTML)(options.textContent);
             const doc = target.window.document;
             const snippet = doc.querySelector("table.highlight")?.textContent;
             if (!snippet)
